@@ -1,27 +1,7 @@
-# <%= @sysconfig_file %>: Managed by puppet.
+# This file is managed by Puppet
 
-# Usage: <%= @package_name %> [-vdst] -f <config> [-p <port>] [-w <workers>] [-b <size>] [-q <size>]
-#
-# Options:
-#   -v  print version and exit
-#   -f  read <config> for clusters and routes
-#   -p  listen on <port> for connections, defaults to 2003
-#   -i  listen on <interface> for connections, defaults to all
-#   -l  write output to <file>, defaults to stdout/stderr
-#   -w  use <workers> worker threads, defaults to 4
-#   -b  server send batch size, defaults to 2500
-#   -q  server queue size, defaults to 25000
-#   -L  server max stalls, defaults to 4
-#   -S  statistics sending interval in seconds, defaults to 60
-#   -B  connection listen backlog, defaults to 3
-#   -T  IO timeout in milliseconds for server connections, defaults to 600
-#   -m  send statistics like carbon-cache.py, e.g. not cumulative
-#   -c  characters to allow next to [A-Za-z0-9], defaults to -_:#
-#   -d  debug mode: currently writes statistics to log, prints hash
-#       ring contents and matching position in test mode (-t)
-#   -s  submission mode: don't add any metrics to the stream like
-#       statistics, report drop counts and queue pressure to log
-#   -t  config test mode: prints rule matches from input on stdin
-#   -H  hostname: override hostname (used in statistics)
-
+<% if @os['distro']['codename'] == 'bionic' -%>
+ARGS=-p <%= @listen %> -w <%= @worker_threads %> -b <%= @server_batch_size %> -q <%= @server_queue_size %> -l <%= @log_dir %>/<%= @log_file %><% if @max_stalls != 0 -%> -L <%= @max_stalls %><% end -%><% if @listen_backlog -%> -B <%= @listen_backlog %><% end -%><% if @io_timeout -%> -T <%= @io_timeout %><% end -%><% if @carbon_cache_statistics -%> -m <% end -%><% if @allowed_chars -%> -c <%= @allowed_chars %><% end -%><% if @statistics_hostname -%> -H <%= @statistics_hostname %><% end -%> -P <%= @pid_dir %>/<%= @pid_file %>
+<% else -%>
 ARGS=-p <%= @listen %> -i <%= @interface %> -w <%= @worker_threads %> -b <%= @server_batch_size %> -q <%= @server_queue_size %> -l <%= @log_dir %>/<%= @log_file %><% if @max_stalls != 0 -%> -L <%= @max_stalls %><% end -%><% if @listen_backlog -%> -B <%= @listen_backlog %><% end -%><% if @io_timeout -%> -T <%= @io_timeout %><% end -%><% if @carbon_cache_statistics -%> -m <% end -%><% if @statistics_sending_interval -%> -S <%= @statistics_sending_interval %><% end -%><% if @allowed_chars -%> -c <%= @allowed_chars %><% end -%><% if @statistics_hostname -%> -H <%= @statistics_hostname %><% end -%>
+<% end -%>

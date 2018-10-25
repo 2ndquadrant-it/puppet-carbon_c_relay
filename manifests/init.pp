@@ -47,6 +47,7 @@
 #
 # [*interface*]
 # Specify on which interface (or all interfaces) carbon-c-relay should listen.
+# Removed in carbon-c-relay 3.2
 #
 # [*listen_backlog*]
 # Specify connection listen backlog
@@ -120,7 +121,8 @@
 # Specify to override hostname used in statistics
 #
 # [*statistics_sending_interval*]
-# Specify the number of seconds between sending data
+# Specify the number of seconds between sending data.
+# Removed in carbon-c-relay 3.2
 #
 # [*worker_threads*]
 #

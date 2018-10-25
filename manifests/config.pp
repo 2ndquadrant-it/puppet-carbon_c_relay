@@ -12,6 +12,8 @@ class carbon_c_relay::config (
   $log_file                    = $carbon_c_relay::log_file,
   $max_stalls                  = $carbon_c_relay::max_stalls,
   $package_name                = $carbon_c_relay::package_name,
+  $pid_dir                     = $carbon_c_relay::pid_dir,
+  $pid_file                    = $carbon_c_relay::pid_file,
   $replication_factor          = $carbon_c_relay::replication_factor,
   $server_batch_size           = $carbon_c_relay::server_batch_size,
   $server_queue_size           = $carbon_c_relay::server_queue_size,
