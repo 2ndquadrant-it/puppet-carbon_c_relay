@@ -1,0 +1,7 @@
+
+listen
+    type linemode <% if @transport || @ssl_pemcert %> transport<% if @transport %> <%= @transport %><% end %><% if @ssl_pemcert %> ssl <%= @ssl_pemcert %><% end %><% end %>
+    <% @interfaces.each do | iface | %>
+        <% if iface['interface'] %><%= iface['interface'] %><% if iface['port'] %>:<%= iface['port'] %><% end %><% if iface['proto'] %> proto <%= iface['proto']%><%end %><% end %>
+    <% end %>
+    ;

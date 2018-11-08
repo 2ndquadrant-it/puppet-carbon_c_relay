@@ -138,6 +138,7 @@ class carbon_c_relay (
   $carbon_cache_statistics     = $carbon_c_relay::params::carbon_cache_statistics,
   $config_clusters             = $carbon_c_relay::params::config_clusters,
   $config_file                 = $carbon_c_relay::params::config_file,
+  $config_listens              = $carbon_c_relay::params::config_listens,
   $config_matches              = $carbon_c_relay::params::config_matches,
   $config_rewrites             = $carbon_c_relay::params::config_rewrites,
   $group                       = $carbon_c_relay::params::group,
@@ -193,6 +194,7 @@ class carbon_c_relay (
 
   validate_hash(
     $config_clusters,
+    $config_listens,
     $config_rewrites,
   )
 
