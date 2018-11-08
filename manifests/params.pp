@@ -4,6 +4,7 @@ class carbon_c_relay::params {
   $carbon_cache_statistics     = false
   $config_clusters             = {}
   $config_file                 = '/etc/carbon-c-relay.conf'
+  $config_listens              = {}
   $config_matches              = {}
   $config_rewrites             = {}
   $group                       = 'carbon-c-relay'

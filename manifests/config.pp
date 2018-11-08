@@ -79,8 +79,12 @@ class carbon_c_relay::config (
 
   create_resources('carbon_c_relay::config::rewrite', $rewrites, $rewrite_defaults)
 
+  ### listen rules
+  create_resources('carbon_c_relay::config::listen', $carbon_c_relay::config_listens )
+
   Carbon_c_relay::Config::Cluster<| |>
   -> Carbon_c_relay::Config::Match<| |>
   -> Carbon_c_relay::Config::Rewrite<| |>
+  -> Carbon_c_relay::Config::Listen<| |>
 
 }
